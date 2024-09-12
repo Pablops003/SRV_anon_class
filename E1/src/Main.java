@@ -1,10 +1,24 @@
-import java.sql.SQLOutput;
+class Persona {
+    // ...
+}
+class Alumno extends Persona {}
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+interface Objeto{}
+
+
+
 public class Main {
+
+    static void imprimirJerarquiaDeClasses(Class<?> c) {
+        System.out.print(c.getName() + (c.getSuperclass() != null ? "  >  " : "\n"));
+        if (c.getSuperclass() == null) return;
+        imprimirJerarquiaDeClasses(c.getSuperclass());
+    }
+
     public static void main(String[] args) {
-        System.out.println("HOLA");
-        System.out.println("ADIOS");
+        Alumno alumno = new Alumno(){};
+        Objeto objeto = new Objeto(){};
+        imprimirJerarquiaDeClasses(alumno.getClass());
+        imprimirJerarquiaDeClasses(objeto.getClass());
     }
 }
